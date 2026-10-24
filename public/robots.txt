@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://steins040617.github.io/sitemap.xml

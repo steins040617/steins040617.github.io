@@ -1,0 +1,5 @@
+# 来源与版权
+
+- 网站以 Ryan Fitzgerald 的 DevPortfolio 为基础，基准提交：852d650fb0a8cf0c98f874af5a56a0a9b7d7d4b7。原 MIT 许可见 LICENSE.md。
+- 项目照片与调试截图来自本人参与的 2024 年音频效果处理器和 2025 年远程实验室竞赛材料。
+- UVMarvel 论文署名与 DOI 按论文原件记录。PDF 的版权及许可适用原文说明，不适用本仓库代码的 MIT 许可。
