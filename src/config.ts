@@ -45,6 +45,19 @@ export const siteConfig = {
   ],
   education: [
     { school: "东南大学", englishSchool: "Southeast University", college: "集成电路学院", degree: "集成电路工程 · 硕士研究生", dateRange: "2026 — 至今", current: true },
-    { school: "西南交通大学", englishSchool: "Southwest Jiaotong University", college: "信息科学与技术学院", degree: "微电子科学与工程 · 本科", dateRange: "2022 — 2026", current: false },
+    {
+      school: "西南交通大学",
+      englishSchool: "Southwest Jiaotong University",
+      college: "信息科学与技术学院",
+      degree: "微电子科学与工程 · 本科",
+      dateRange: "2022 — 2026",
+      current: false,
+      academicStats: [
+        { value: "3.91", suffix: "/ 4.0", label: "GPA" },
+        { value: "1", suffix: "/ 34", label: "专业排名" },
+        { value: "2", suffix: "次", label: "国家奖学金" },
+      ],
+      honors: ["四川省优秀毕业生", "三好学生标兵"],
+    },
   ],
 };
