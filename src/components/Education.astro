@@ -6,9 +6,11 @@ import { siteConfig } from "../config";
   <div class="section-content education-list">{siteConfig.education.map(edu => <article class="education-item">
     <div class="education-top"><span class="mono education-date">{edu.dateRange}</span>{edu.current && <span class="current-label"><span class="status-dot" aria-hidden="true"></span>在读</span>}</div>
     <h3>{edu.school}</h3><p class="school-english" lang="en">{edu.englishSchool}</p><p class="education-college">{edu.college}</p><p class="education-degree">{edu.degree}</p>
-    {"academicStats" in edu && edu.academicStats && <dl class="education-stats" aria-label="本科学业与奖学金">
-      {edu.academicStats.map(stat => <div><dt>{stat.label}</dt><dd><strong>{stat.value}</strong><span>{stat.suffix}</span></dd></div>)}
-    </dl>}
-    {"honors" in edu && edu.honors && <ul class="education-honors" aria-label="本科代表性荣誉">{edu.honors.map(honor => <li>{honor}</li>)}</ul>}
+    {"academicStats" in edu && edu.academicStats && <div class="education-distinction">
+      <dl class="education-rank" aria-label="本科专业排名">
+        {edu.academicStats.map(stat => <div><dt>{stat.label}<span>年级第一</span></dt><dd><strong>{stat.value}</strong><span>{stat.suffix}</span></dd></div>)}
+      </dl>
+      {"honors" in edu && edu.honors && <ul class="education-awards" aria-label="本科代表性荣誉">{edu.honors.map(honor => <li><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="5"/><path d="m8.5 12-1 9 4.5-3 4.5 3-1-9"/></svg><span>{honor}</span></li>)}</ul>}
+    </div>}
   </article>)}</div>
 </section>

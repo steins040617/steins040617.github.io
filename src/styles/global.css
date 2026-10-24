@@ -13,16 +13,13 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
 
 /* Compact project summaries and shared case-study pages. */
-.education-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:23px 0 0;padding:20px 22px;background:#f5f8fd;border:1px solid #e5edf8;border-radius:6px}
-.education-stats>div{display:flex;flex-direction:column-reverse;gap:5px;min-width:0}
-.education-stats dt{font-size:11px;color:var(--muted);line-height:1.8}
-.education-stats dd{margin:0;display:flex;align-items:baseline;gap:6px;white-space:nowrap;line-height:1.4}
-.education-stats strong{font-size:28px;font-weight:750;letter-spacing:-.8px;color:var(--accent)}
-.education-stats dd span{font-size:12px;color:#7d8ba0}
-.education-honors{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
-.education-honors li{font-size:11px;line-height:1.8;padding:5px 11px;border:1px solid #dbe5f5;border-radius:4px;color:#49648e;background:#fff}
-@media(max-width:720px){.education-stats{padding:16px 13px;gap:10px;margin-top:20px}.education-stats strong{font-size:24px}.education-stats dd{gap:4px}.education-stats dd span{font-size:10px}.education-stats dt{font-size:10px}.education-honors{gap:7px;margin-top:13px}.education-honors li{font-size:10px;padding:4px 9px}}
-@media(max-width:360px){.education-stats{padding:14px 10px;gap:7px}.education-stats strong{font-size:21px}.education-stats dd span{font-size:9px}}
+.education-distinction{display:grid;grid-template-columns:180px minmax(0,1fr);gap:25px;align-items:center;margin-top:23px;padding:22px;background:#f5f8fd;border:1px solid #e5edf8;border-radius:6px}
+.education-rank{margin:0}.education-rank>div{display:flex;align-items:center;gap:17px}
+.education-rank dt{font-size:12px;line-height:1.7;color:#4e607a;white-space:nowrap}.education-rank dt>span{display:block;font-size:10px;color:#8794a8;margin-top:3px}
+.education-rank dd{order:-1;display:flex;align-items:baseline;gap:5px;margin:0;white-space:nowrap;line-height:1.25}
+.education-rank strong{font-size:42px;font-weight:750;letter-spacing:-1px;color:var(--accent)}.education-rank dd>span{font-size:12px;color:#8593a8}
+.education-awards{display:flex;flex-direction:column;gap:11px;padding-left:25px;border-left:1px solid #dce5f3}.education-awards li{display:flex;align-items:center;gap:9px;font-size:12px;line-height:1.9;color:#49648e}.education-awards svg{color:#6684b3;flex-shrink:0}
+@media(max-width:720px){.education-distinction{grid-template-columns:minmax(0,1fr);gap:16px;padding:18px;margin-top:20px}.education-rank strong{font-size:38px}.education-rank dt{font-size:12px}.education-awards{padding:14px 0 0;border-left:0;border-top:1px solid #dce5f3;gap:9px}.education-awards li{font-size:12px}}
 .project-title-link:hover{color:var(--accent)}
 .button-outline{border:1px solid #b8c9ec;color:var(--accent);background:#fff}
 .button-outline:hover{background:#eff5ff;border-color:var(--accent)}

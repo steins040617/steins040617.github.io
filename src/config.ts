@@ -53,11 +53,9 @@ export const siteConfig = {
       dateRange: "2022 — 2026",
       current: false,
       academicStats: [
-        { value: "3.91", suffix: "/ 4.0", label: "GPA" },
         { value: "1", suffix: "/ 34", label: "专业排名" },
-        { value: "2", suffix: "次", label: "国家奖学金" },
       ],
-      honors: ["四川省优秀毕业生", "三好学生标兵"],
+      honors: ["国家奖学金 · 两次", "四川省优秀毕业生"],
     },
   ],
 };
