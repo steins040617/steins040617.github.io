@@ -1,4 +1,5 @@
 ---
 import { siteConfig } from "../config";
+const home = Astro.url.pathname === "/" ? "" : "/";
 ---
-<footer class="site-footer"><div class="footer-inner"><div><a class="wordmark" href="#home">{siteConfig.handle}<span>.</span></a><p>{siteConfig.name} <span class="footer-divider">/</span> {siteConfig.englishName}</p></div><div class="footer-right"><a class="inline-link" href={siteConfig.social.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a><p>© {new Date().getFullYear()} {siteConfig.englishName}</p><p class="template-credit">Based on <a href="https://github.com/RyanFitzgerald/devportfolio" target="_blank" rel="noopener noreferrer">DevPortfolio</a></p></div></div></footer>
+<footer class="site-footer"><div class="footer-inner"><div><a class="wordmark" href={`${home}#home`}>{siteConfig.handle}<span>.</span></a><p>{siteConfig.name} <span class="footer-divider">/</span> {siteConfig.englishName}</p></div><div class="footer-right"><a class="inline-link" href={siteConfig.social.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a><p>© {new Date().getFullYear()} {siteConfig.englishName}</p><p class="template-credit">Based on <a href="https://github.com/RyanFitzgerald/devportfolio" target="_blank" rel="noopener noreferrer">DevPortfolio</a></p></div></div></footer>

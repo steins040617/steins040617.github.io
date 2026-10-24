@@ -1,0 +1,11 @@
+---
+import type { Diagram } from "../data/project-details";
+interface Props { diagram: Diagram; eager?: boolean }
+const { diagram, eager = false } = Astro.props;
+---
+<figure class="system-diagram">
+  <a class="diagram-image-link" href={diagram.src} target="_blank" rel="noopener noreferrer" aria-label={`查看原图：${diagram.alt}`}>
+    <img src={diagram.src} alt={diagram.alt} width={diagram.width} height={diagram.height} loading={eager ? "eager" : "lazy"} decoding="async" />
+  </a>
+  <figcaption><span>{diagram.caption}</span><a href={diagram.src} target="_blank" rel="noopener noreferrer">查看原图 ↗</a></figcaption>
+</figure>

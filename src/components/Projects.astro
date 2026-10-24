@@ -5,11 +5,9 @@ import { siteConfig } from "../config";
   <div class="section-heading"><p class="eyebrow">02 / 项目实践</p><h2 id="projects-title">Projects<span class="section-period">.</span></h2><div class="section-rule"></div><p class="section-intro">两个竞赛项目。<br />从信号处理到远程实验系统。</p></div>
   <div class="section-content project-list">{siteConfig.projects.map((project, index) => <article class="project" id={project.id}>
     <div class="project-meta"><span class="mono">0{index + 1} / {project.year}</span><span class="award"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 3h8v6a4 4 0 0 1-8 0V3ZM8 5H4v3a4 4 0 0 0 4 4m8-7h4v3a4 4 0 0 1-4 4M12 13v5m-4 3v-3h8v3"/></svg>{project.award}</span></div>
-    <h3>{project.name}</h3><p class="project-subtitle" lang="en">{project.subtitle}</p>
-    <figure class="project-figure"><img src={project.image} alt={project.imageAlt} width="1200" height="900" loading="lazy" decoding="async" /><figcaption>{project.imageCaption}</figcaption></figure>
-    <p class="project-description">{project.description}</p><ul class="project-highlights">{project.highlights.map(text => <li>{text}</li>)}</ul>
-    <div class="project-metrics">{project.metrics.map(metric => <span>{metric}</span>)}</div><p class="metric-note">{project.metricNote}</p>
+    <h3><a class="project-title-link" href={`/projects/${project.id}/`}>{project.name}</a></h3><p class="project-subtitle" lang="en">{project.subtitle}</p>
+    <p class="project-description">{project.description}</p>
     <p class="competition">{project.competition}</p><div class="tags">{project.skills.map(skill => <span>{skill}</span>)}</div>
-    <details class="project-details"><summary>技术细节 <span aria-hidden="true">+</span></summary><div class="details-content"><p>{project.details}</p>{project.extraImage && <img src={project.extraImage} alt={project.extraImageAlt} width="1269" height="790" loading="lazy" decoding="async" />}</div></details>
+    <a class="button button-outline project-detail-button" href={`/projects/${project.id}/`} aria-label={`查看项目详情：${project.name}`}>查看项目详情 <span aria-hidden="true">↗</span></a>
   </article>)}</div>
 </section>

@@ -1,9 +1,10 @@
 ---
 import { siteConfig } from "../config";
-const links = [{href: "#about", label: "关于"}, {href: "#projects", label: "项目"}, {href: "#publications", label: "论文"}, {href: "#education", label: "教育"}];
+const home = Astro.url.pathname === "/" ? "" : "/";
+const links = [{href: `${home}#about`, label: "关于"}, {href: `${home}#projects`, label: "项目"}, {href: `${home}#publications`, label: "论文"}, {href: `${home}#education`, label: "教育"}];
 ---
 <header class="site-header"><nav class="nav-shell" aria-label="主导航">
-  <a class="wordmark" href="#home" aria-label="返回首页">{siteConfig.handle}<span>.</span></a>
+  <a class="wordmark" href={`${home}#home`} aria-label="返回首页">{siteConfig.handle}<span>.</span></a>
   <ul class="nav-links">{links.map(link => <li><a href={link.href}>{link.label}</a></li>)}</ul>
   <a class="nav-github" href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" aria-label="在新标签页访问 GitHub">GitHub ↗</a>
 </nav></header>

@@ -1,0 +1,75 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Diagram from "../../components/Diagram.astro";
+import { siteConfig } from "../../config";
+import { projectDetails } from "../../data/project-details";
+
+export function getStaticPaths() {
+  return siteConfig.projects.map(project => ({params: {slug: project.id}, props: {project}}));
+}
+const {project} = Astro.props;
+const detail = projectDetails[project.id];
+const other = siteConfig.projects.find(item => item.id !== project.id)!;
+const title = `${project.name} · ${siteConfig.name}`;
+---
+<BaseLayout title={title} description={project.description} path={`/projects/${project.id}/`}>
+  <div class="project-page-hero">
+    <div class="section-shell detail-hero-inner">
+      <a class="back-link" href="/#projects"><span aria-hidden="true">←</span> 返回项目列表</a>
+      <div class="detail-eyebrow"><span class="eyebrow">PROJECT / {project.year}</span><span class="award">{project.award}</span></div>
+      <h1>{project.name}<span class="section-period">.</span></h1>
+      <p class="detail-subtitle" lang="en">{project.subtitle}</p>
+      <p class="detail-lead">{detail.lead}</p>
+      <div class="tags">{project.skills.map(skill => <span>{skill}</span>)}</div>
+      <p class="detail-competition">{project.competition}</p>
+    </div>
+  </div>
+
+  <div class="section-shell detail-layout">
+    <aside class="detail-toc">
+      <nav aria-label="项目详情目录">
+        <p class="eyebrow">IN THIS PROJECT</p>
+        <a href="#overview">01 项目概览</a>
+        <a href="#architecture">02 系统架构</a>
+        <a href="#modules">03 功能模块</a>
+        <div class="module-toc">{detail.modules.map(module => <a href={`#${module.id}`}>{module.title}</a>)}</div>
+        <a href="#highlights">04 工程亮点</a>
+        <a href="#results">05 项目成果</a>
+      </nav>
+    </aside>
+
+    <div class="detail-body">
+      <section id="overview" class="detail-section">
+        <p class="eyebrow">01 / OVERVIEW</p><h2>项目概览</h2>
+        {detail.overview.map(text => <p>{text}</p>)}
+      </section>
+      <section id="architecture" class="detail-section">
+        <p class="eyebrow">02 / ARCHITECTURE</p><h2>系统架构</h2>
+        <p>{detail.architectureText}</p>
+        <Diagram diagram={detail.diagram} eager />
+        <div class="signal-flow" aria-label="系统主要处理流程">{detail.flow.map((step, i) => <><span>{step}</span>{i < detail.flow.length - 1 && <span class="flow-arrow" aria-hidden="true">→</span>}</>)}</div>
+      </section>
+      <section id="modules" class="detail-section modules-section">
+        <p class="eyebrow">03 / MODULE DESIGN</p><h2>功能模块</h2>
+        <p class="module-intro">{detail.moduleIntro}</p>
+        {detail.modules.map((module, i) => <article id={module.id} class="module-article">
+          <div class="module-heading"><span class="module-number mono">{String(i + 1).padStart(2, "0")}</span><div><p class="module-kicker" lang="en">{module.english}</p><h3>{module.title}</h3></div></div>
+          <p>{module.description}</p>
+          <ul class="detail-bullets">{module.points.map(point => <li>{point}</li>)}</ul>
+          {module.diagram && <Diagram diagram={module.diagram} />}
+        </article>)}
+      </section>
+      <section id="highlights" class="detail-section">
+        <p class="eyebrow">04 / ENGINEERING</p><h2>工程亮点</h2>
+        <div class="engineering-list">{detail.highlights.map((item, i) => <article><span class="mono">0{i + 1}</span><div><h3>{item.title}</h3><p>{item.description}</p></div></article>)}</div>
+      </section>
+      <section id="results" class="detail-section detail-results">
+        <p class="eyebrow">05 / OUTCOME</p><h2>项目成果</h2>
+        <p class="outcome-award">{project.award}</p><p>{project.competition}</p>
+        <div class="detail-metrics">{detail.metrics.map(metric => <div><strong>{metric.value}</strong><span>{metric.label}</span></div>)}</div>
+        <p class="results-note">{detail.resultNote}</p>
+      </section>
+      <div class="project-pagination"><a class="back-link" href="/#projects">← 返回项目列表</a><a href={`/projects/${other.id}/`}><span>另一个项目 ↗</span><strong>{other.name}</strong></a></div>
+    </div>
+  </div>
+</BaseLayout>

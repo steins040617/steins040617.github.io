@@ -20,7 +20,11 @@ npm run preview
 
 ## 更新内容
 
-修改 `src/config.ts` 中的简介、项目、论文和教育信息。照片在 `public/images/`，论文及引用在 `public/papers/`。推送到 `main` 后，GitHub Actions 自动构建并发布到 GitHub Pages。仓库 Settings → Pages 的 Source 使用 GitHub Actions。
+修改 `src/config.ts` 中的简介、项目摘要、论文和教育信息。项目详情页内容在 `src/data/project-details.ts`，由 `src/pages/projects/[slug].astro` 生成独立页面。系统框图来自原始设计文稿，放在 `public/images/diagrams/`；论文及引用在 `public/papers/`。
+
+首页项目区使用无图摘要，点击“查看项目详情”后查看系统架构、功能模块、工程亮点与成果。详情页框图可点击打开原图。
+
+推送到 `main` 后，GitHub Actions 自动构建并发布到 GitHub Pages。仓库 Settings → Pages 的 Source 使用 GitHub Actions。
 
 ## 素材及许可
 
