@@ -7,4 +7,28 @@ const links = [{href: `${home}#about`, label: "关于"}, {href: `${home}#project
   <a class="wordmark" href={`${home}#home`} aria-label="返回首页">{siteConfig.handle}<span>.</span></a>
   <ul class="nav-links">{links.map(link => <li><a href={link.href}>{link.label}</a></li>)}</ul>
   <a class="nav-github" href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" aria-label="在新标签页访问 GitHub">GitHub ↗</a>
+  <details class="mobile-navigation" data-close-on-navigate>
+    <summary aria-label="打开或关闭导航菜单"><span>导航</span><svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16M4 12h16M4 18h16" /></svg></summary>
+    <nav class="mobile-navigation-panel" aria-label="手机导航">
+      {links.map(link => <a href={link.href}>{link.label}<span aria-hidden="true">↗</span></a>)}
+      <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer">GitHub<span aria-hidden="true">↗</span></a>
+    </nav>
+  </details>
 </nav></header>
+
+<script>
+  // Native details provides a keyboard-accessible menu even without JavaScript.
+  const mobileNavigation = document.querySelector<HTMLDetailsElement>(".mobile-navigation");
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) return;
+    const link = event.target.closest("[data-close-on-navigate] a");
+    link?.closest("details")?.removeAttribute("open");
+    if (mobileNavigation && !mobileNavigation.contains(event.target)) mobileNavigation.open = false;
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && mobileNavigation?.open) {
+      mobileNavigation.open = false;
+      mobileNavigation.querySelector("summary")?.focus();
+    }
+  });
+</script>

@@ -5,7 +5,11 @@ import { siteConfig } from "../config";
   <div class="section-heading"><p class="eyebrow">03 / 研究论文</p><h2 id="publications-title">Publications<span class="section-period">.</span></h2><div class="section-rule"></div><p class="section-intro">大语言模型与<br />子系统级 RTL 验证。</p></div>
   <div class="section-content">{siteConfig.publications.map(paper => <article class="paper">
     <div class="paper-meta"><span class="venue mono">{paper.venue}</span><span class="author-role">{paper.role}</span></div><h3 lang="en">{paper.title}</h3>
-    <p class="paper-authors" lang="en">{paper.authors.map((author, i) => <>{i > 0 ? ", " : ""}{author === siteConfig.englishName ? <strong>{author}</strong> : author}</>)}</p>
+    <p class="paper-authors paper-desktop-authors" lang="en">{paper.authors.map((author, i) => <>{i > 0 ? ", " : ""}{author === siteConfig.englishName ? <strong>{author}</strong> : author}</>)}</p>
+    <details class="paper-mobile-authors">
+      <summary><span>{siteConfig.englishName} · {paper.role}</span><span class="author-toggle">作者名单 <span aria-hidden="true">＋</span></span></summary>
+      <p class="paper-authors" lang="en">{paper.authors.map((author, i) => <>{i > 0 ? ", " : ""}{author === siteConfig.englishName ? <strong>{author}</strong> : author}</>)}</p>
+    </details>
     <p class="paper-description">{paper.description}</p>
     <div class="paper-links"><a class="button button-primary" href={paper.pdf} target="_blank" rel="noopener noreferrer">阅读论文 PDF ↗</a><a class="inline-link" href={paper.doi} target="_blank" rel="noopener noreferrer">DOI ↗</a><a class="inline-link" href={paper.code} target="_blank" rel="noopener noreferrer">复现代码 ↗</a><a class="inline-link" href={paper.bib} download>引用 .bib ↓</a></div>
     <div class="tags paper-tags">{paper.keywords.map(keyword => <span>{keyword}</span>)}</div>
